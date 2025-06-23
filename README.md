@@ -103,7 +103,10 @@ If there's no unprintable area (when creating a PDF, for example), it would look
 
 ![image](https://github.com/user-attachments/assets/94bc5e1b-ad04-46aa-ba85-5a1d824c4221)
 
-If the unprintable area width is 16px, on the other hand, it would result in a print layout like this:
+If the unprintable area width is 16px, on the other hand, it would result in a
+print layout like this (see how the corner boxes are still in the corners,
+whereas the ones along the top, right, bottom and left edges are shifted away
+from the edge, due to usage of `env(safe-printable-inset)`:
 
 ![image](https://github.com/user-attachments/assets/1f25679a-58d6-4cb1-b371-3c4958073e73)
 
