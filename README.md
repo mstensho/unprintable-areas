@@ -17,8 +17,8 @@ We could use an env() variable for this.
 https://drafts.csswg.org/css-env-1/#safe-area-insets may serve as an
 inspiration. However, this is for non-rectangular displays, such as those with
 rounded corners on mobile phones. Such displays may even have holes for cameras,
-microphones and speakers. Furthermore, the device is capable of providing
-reliable values for each of the four edges of the screen.
+microphones and speakers. The device is capable of providing reliable values for
+each of the four edges of the screen.
 
 Some printers don't have the same unprintable area inset along each of the four
 paper edges, but the printers may rotate the print output at their own
@@ -117,8 +117,8 @@ capabilities):
 ![image](https://github.com/user-attachments/assets/667b10fa-521f-4dbb-ac9c-4f424a197e05)
 
 One concern is printers with large unprintable areas along one edge, and more
-"reasonable" values along the other three edges. It may be necessary to
-non-normatively tell authors about this. Maybe they want to use some sort of
+"reasonable" values along the other three edges. It may be necessary to warn
+authors about this in the spec. Maybe they want to use some sort of
 `min(env(safe-printable-inset), 42px)`, to prevent too large margins. At the
 same time, with printers that actually reach such a limit, content may end up
 missing or clipped.
@@ -139,7 +139,8 @@ would make real-world measurements off, though.
 
 This environment variable is only available (non-zero) when generating print
 layout. Exposing it for screen layout is meaningless. It's still possible for a
-site to obtain the safe printable inset. Is this a concern?
+site to obtain the safe printable inset, by adding a listener for 'print' media
+type changes. Is this a concern?
 
 Example:
 
