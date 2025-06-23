@@ -123,6 +123,10 @@ authors about this in the spec. Maybe they want to use some sort of
 same time, with printers that actually reach such a limit, content may end up
 missing or clipped.
 
+This can be tested in Chrome 139, by enabling the Blink feature
+`CSSSafePrintableInset`, or by specifying
+`--enable-experimental-web-platform-features`.
+
 ## What do web developers currently have to do, without this?
 
 Since there's currently no API for this, authors have to either leave the
