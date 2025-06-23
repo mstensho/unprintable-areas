@@ -139,7 +139,7 @@ would make real-world measurements off, though.
 
 This environment variable is only available (non-zero) when generating print
 layout. Exposing it for screen layout is meaningless. It's still possible for a
-site to obtain the safe rintable inset. Is this a concern?
+site to obtain the safe printable inset. Is this a concern?
 
 Example:
 
