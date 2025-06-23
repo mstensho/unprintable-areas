@@ -101,15 +101,15 @@ Content.
 
 If there's no unprintable area (when creating a PDF, for example), it would look like this:
 
-
+![image](https://github.com/user-attachments/assets/94bc5e1b-ad04-46aa-ba85-5a1d824c4221)
 
 If the unprintable area width is 16px, on the other hand, it would result in a print layout like this:
 
-
+![image](https://github.com/user-attachments/assets/1f25679a-58d6-4cb1-b371-3c4958073e73)
 
 On paper it would look like this (if the printer doesn't lie too much about its capabilities):
 
-
+![image](https://github.com/user-attachments/assets/667b10fa-521f-4dbb-ac9c-4f424a197e05)
 
 One concern here is printers with large unprintable areas along one edge, and
 more "reasonable" values along the other three edges.
