@@ -99,7 +99,8 @@ Example:
 Content.
 ```
 
-If there's no unprintable area (when creating a PDF, for example), it would look like this:
+If there's no unprintable area (when creating a PDF, for example), it would look
+like this:
 
 ![image](https://github.com/user-attachments/assets/94bc5e1b-ad04-46aa-ba85-5a1d824c4221)
 
@@ -110,9 +111,57 @@ from the edge, due to usage of `env(safe-printable-inset)`:
 
 ![image](https://github.com/user-attachments/assets/1f25679a-58d6-4cb1-b371-3c4958073e73)
 
-On paper it would look like this (if the printer doesn't lie too much about its capabilities):
+On paper it would look like this (if the printer doesn't lie too much about its
+capabilities):
 
 ![image](https://github.com/user-attachments/assets/667b10fa-521f-4dbb-ac9c-4f424a197e05)
 
-One concern here is printers with large unprintable areas along one edge, and
-more "reasonable" values along the other three edges.
+One concern is printers with large unprintable areas along one edge, and more
+"reasonable" values along the other three edges. It may be necessary to
+non-normatively tell authors about this. Maybe they want to use some sort of
+`min(env(safe-printable-inset), 42px)`, to prevent too large margins. At the
+same time, with printers that actually reach such a limit, content may end up
+missing or clipped.
+
+## What do web developers currently have to do, without this?
+
+Since there's currently no API for this, authors have to either leave the
+margins at the default settings (which should take unprintable areas into
+account), or be very conservative about placing content near the paper edges.
+
+## Alternatives
+
+An alternative could be to provide an option in the (print preview) user
+interface to fit the output to the printable area, by scaling it down. That
+would make real-world measurements off, though.
+
+## Are there any privacy, security and accessibility considerations?
+
+This environment variable is only available (non-zero) when generating print
+layout. Exposing it for screen layout is meaningless. It's still possible for a
+site to obtain the safe rintable inset. Is this a concern?
+
+Example:
+
+```html
+<!DOCTYPE html>
+<style>
+  @page {
+    margin: 0;
+  }
+  body {
+    margin: 0;
+  }
+  #foo {
+    margin: env(safe-printable-inset);
+  }
+</style>
+Hello.
+<div id="foo">The margins will be inset to steer clear of unprintable areas.</div>
+
+<script>
+  window.matchMedia("print").addListener(()=> {
+    console.log("Margin-left: " + getComputedStyle(foo).marginLeft);
+  });
+</script>
+```
