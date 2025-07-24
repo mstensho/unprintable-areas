@@ -135,7 +135,18 @@ account), or be very conservative about placing content near the paper edges.
 
 ## Alternatives
 
-An alternative could be to provide an option in the (print preview) user
+A counter-proposal [*] from Mozilla is to introduce a keyword descriptor /
+property to `@page` and margin contexts. A problem with using env() is that the
+values should of course remain the same throughout rendering. However, if the
+sheet of paper is smaller than the requested page size in the document (and page
+sizes may vary throughout the document), the output will typically be scaled
+down (which means that the env() value needs to be scaled up to compensate, or
+we'll end up in the unprintable areas). As such it may be better with a keyword
+that simply says that used margins are to be clamped to the printable inset.
+
+[*] https://github.com/w3c/csswg-drafts/issues/11395#issuecomment-3028315523
+
+Another alternative could be to provide an option in the (print preview) user
 interface to fit the output to the printable area, by scaling it down. That
 would make real-world measurements off, though.
 
